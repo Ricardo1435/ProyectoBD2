@@ -97,8 +97,9 @@
                             <center> 
                                 <form action="ControladorCliente" method="POST">
                                 <input type="hidden" id="idCliente" name="idCliente" value="${dato.getIdCliente()}">
+                                <input type="hidden" id="correo" name="correo" value="${correo}">
                                 <button class="btn btn-warning" type="submit" name="accion" value="Editar">Editar&nbsp;<i class="fas fa-edit"></i></button>
-                                <button class="btn btn-danger" type="button" id="btnEliminarCliente" value="${dato.getIdCliente()}">Eliminar&nbsp;<i class="fas fa-trash-alt"></i></button>
+                                <button class="btn btn-danger" type="submit" name="accion" value="Eliminar"> Eliminar&nbsp;<i class="fas fa-trash-alt"></i></button>
                                 </form>
                             </center>    
                             </td>
@@ -111,6 +112,7 @@
     </div>
            <form action="ControladorCliente" method="POST">
              <button type="submit" id="btnListar" class="btn btn-outline-info my-3" name="accion" value="Listar" title="Mostrar Clientes"><i class="fas fa-clipboard-list fa-3x"></i></button>
+             <button type="submit" class="btn btn-outline-secondary my-3" name="accion" value="Papelera" title="Clientes Eliminados"><i class="fa fa-trash-o fa-3x" aria-hidden="true"></i></button>
            </form>
         </div>
     </body>

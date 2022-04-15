@@ -1,14 +1,16 @@
 package Modelo;
 import Config.Conexion;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class ClienteDAO {
-   PreparedStatement ps;
+    PreparedStatement ps;
     ResultSet rs;
     Conexion c = new Conexion();
     Connection con;
@@ -118,4 +120,35 @@ public class ClienteDAO {
         }
         return lista;
     }
+   
+   public void eliminar(String idCliente, String correo) {
+        String sql="{call elimina_cliente (?,?)}";
+        
+        try {
+            con=c.conectar();
+            CallableStatement cs = con.prepareCall(sql);
+            cs.setString(1, idCliente);
+            cs.setString(2, correo);
+            cs.executeUpdate();
+        } catch (Exception e) {
+            
+        }
+    }
+   
+   /*
+   public void eliminar(String idCliente, String correo) {
+        String sql="{call elimina_cliente (?,?)}";
+        
+        try {
+            con=c.conectar();
+            CallableStatement cs = con.prepareCall(sql);
+            ps=con.prepareCall(sql);
+            cs.setString(1, idCliente);
+            cs.setString(2, correo);
+            cs.executeUpdate();
+        } catch (Exception e) {
+            
+        }
+    }
+   */
 }

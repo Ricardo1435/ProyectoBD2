@@ -1,9 +1,3 @@
-<%-- 
-    Document   : AutorIndex
-    Created on : 23/11/2020, 11:23:00 AM
-    Author     : Ricardo
---%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -23,7 +17,7 @@
         <script src="Sweetalert/sweetalert.js" type="text/javascript"></script>
         <!-- Favicon -->
         <link rel="icon" href="IMG/bus.svg">
-        <title>Clientes</title>
+        <title>Clientes Eliminados</title>
     </head>
     <body>
         <!-- Barra de Navegacion -->
@@ -35,23 +29,10 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                            <a class="nav-link">Clientes <span class="sr-only">(current)</span></a>
+                            <a class="nav-link">Clientes Eliminados<span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="principal.jsp">Inicio <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="ViajeroIndex.jsp">Viajeros <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Más
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                              <a class="dropdown-item" href="DestinoIndex.jsp">Destinos <i class="fas fa-map-marked-alt"></i></i></a>
-                              <a class="dropdown-item" href="VehiculoIndex.jsp">Vehículos  <i class="fas fa-bus"></i></a>
-                              <a class="dropdown-item" href="ConductorIndex.jsp">Conductores  <i class="fas fa-user-tie"></i> </a>
-                            </div>
+                            <a class="nav-link" href="ClienteIndex.jsp">Clientes <span class="sr-only">(current)</span></a>
                         </li>
                     </ul>
                 </div>
@@ -61,8 +42,8 @@
         <div class="card border-info">
             <div class="card-header bg-info text-white">
             <div class="navbar">
-                <a class="btn btn-light" id="new" name="accion" value="Nuevo" href="AddCliente.jsp">Nuevo</a>
-               <form class="form-inline" action="ControladorCliente" method="POST">
+               <a class="btn btn-light" id="new" name="accion" value="Volver" href="ClienteIndex.jsp"><i class="fa fa-arrow-left " aria-hidden="true"></i></a>
+               <form class="form-inline" action="ControladorClienteEliminado" method="POST">
                    <input type="search" class="form-control" autocomplete="off" name="ingresoBuscar">
                    <input type="submit" name="accion" value="Buscar" class="btn btn-light">
                </form>
@@ -74,7 +55,12 @@
             <table class="table table-striped table-bordered m-auto">
                 <thead class="thead-dark" >
                 <tr>
-                    <th colspan="6"><h5><center>CLIENTES</center></h5></th>
+                    <th colspan="8"><h5><center>CLIENTES ELIMINADOS</center></h5></th>
+                </tr>
+                <tr>
+                    <th colspan="5"><h5><center>DETALLES DEL CLIENTE</center></h5></th>
+                    <th colspan="2"><h5><center>DETALLES DE ELIMINACION</center></h5></th>
+                    <th rowspan="2"><h5><center>OPCIONES</center></h5></th>
                 </tr>
                 <tr>
                  <th scope="col"><center>ID</center></th>
@@ -82,24 +68,25 @@
                  <th scope="col"><center>NOMBRES</center></th>
                  <th scope="col"><center>APELLIDOS</center></th>
                  <th scope="col"><center>EDAD</center></th>
-                 <th scope="col"><center>OPCIONES</center></th>
+                 <th scope="col"><center>FECHA</center></th>
+                 <th scope="col"><center>USUARIO</center></th>
                 </tr>
               </thead>
                 <tbody id="tabla">
                     <c:forEach var="dato" items="${datos}">
                         <tr>
-                            <td><center>${dato.getIdCliente()}</center></td>
-                            <td><center>${dato.getDpiCliente()}</center></td>
-                            <td><center>${dato.getNombresCliente()}</center></td>
-                            <td><center>${dato.getApellidosCliente()}</center></td>
-                            <td><center>${dato.getEdadCliente()}</center></td>
+                            <td><center>${dato.getIdClienteEliminado()}</center></td>
+                            <td><center>${dato.getDpiClienteEliminado()}</center></td>
+                            <td><center>${dato.getNombresClienteEliminado()}</center></td>
+                            <td><center>${dato.getApellidosClienteEliminado()}</center></td>
+                            <td><center>${dato.getEdadClienteEliminado()}</center></td>
+                            <td><center>${dato.getFecha()}</center></td>
+                            <td><center>${dato.getCorreo()}</center></td>
                             <td>
                             <center> 
-                                <form action="ControladorCliente" method="POST">
-                                <input type="hidden" id="idCliente" name="idCliente" value="${dato.getIdCliente()}">
-                                <input type="hidden" id="correo" name="correo" value="${correo}">
-                                <button class="btn btn-warning" type="submit" name="accion" value="Editar">Editar&nbsp;<i class="fas fa-edit"></i></button>
-                                <button class="btn btn-danger" type="submit" name="accion" value="Eliminar"> Eliminar&nbsp;<i class="fas fa-trash-alt"></i></button>
+                                <form action="ControladorClienteEliminado" method="POST">
+                                <input type="hidden" id="idClienteEliminado" name="idClienteEliminado" value="${dato.getIdClienteEliminado()}">
+                                <button class="btn btn-secondary" type="submit" name="accion" value="Restaurar"> Restaurar</button>
                                 </form>
                             </center>    
                             </td>
@@ -110,9 +97,8 @@
              </div>
         </div>
     </div>
-           <form action="ControladorCliente" method="POST">
-             <button type="submit" id="btnListar" class="btn btn-outline-info my-3" name="accion" value="Listar" title="Mostrar Clientes"><i class="fas fa-clipboard-list fa-3x"></i></button>
-             <button type="submit" class="btn btn-outline-secondary my-3" name="accion" value="Papelera" title="Clientes Eliminados"><i class="fa fa-trash-o fa-3x" aria-hidden="true"></i></button>
+           <form action="ControladorClienteEliminado" method="POST">
+             <button type="submit" id="btnListar" class="btn btn-outline-info my-3" name="accion" value="Listar" title="Mostrar Clientes Eliminados"><i class="fas fa-clipboard-list fa-3x"></i></button>
            </form>
         </div>
     </body>

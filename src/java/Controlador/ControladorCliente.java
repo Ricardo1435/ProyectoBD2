@@ -120,6 +120,14 @@ Cliente cli = new Cliente();
                 request.setAttribute("datos", lista);
                 request.getRequestDispatcher("ClienteIndex.jsp").forward(request, response);
                 break;
+            case "Eliminar":
+                String idCli=request.getParameter("idCliente");
+                String correo=request.getParameter("correo");
+                dao.eliminar(idCli, correo);
+                request.getRequestDispatcher("ControladorCliente?accion=Listar").forward(request, response);
+                 break;
+            case "Papelera":
+                request.getRequestDispatcher("ClienteEliminadoIndex.jsp").forward(request, response);
            default: throw new AssertionError();
        }
     }
