@@ -32,7 +32,7 @@
                             <a class="nav-link">Conductores Eliminados<span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="ConductorIndex.jsp">Clientes <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="ConductorIndex.jsp">Conductores <span class="sr-only">(current)</span></a>
                         </li>
                     </ul>
                 </div>
@@ -42,7 +42,9 @@
         <div class="card border-info">
             <div class="card-header bg-info text-white">
             <div class="navbar">
-               <a class="btn btn-light" id="new" name="accion" value="Volver" href="ConductorIndex.jsp"><i class="fa fa-arrow-left " aria-hidden="true"></i></a>
+                <form action="ControladorConductorEliminado" method="POST">
+                <button class="btn btn-light" id="new" type="submit" name="accion" value="Volver"><i class="fa fa-arrow-left " aria-hidden="true"></i></button>
+                </form>
                <form class="form-inline" action="ControladorConductorEliminado" method="POST">
                    <input type="search" class="form-control" autocomplete="off" name="ingresoBuscar">
                    <input type="submit" name="accion" value="Buscar" class="btn btn-light">
@@ -55,19 +57,20 @@
             <table class="table table-striped table-bordered m-auto">
                 <thead class="thead-dark" >
                 <tr>
-                    <th colspan="8"><h5><center>CONDUCTORES ELIMINADOS</center></h5></th>
+                    <th colspan="9"><h5><center>CONDUCTORES ELIMINADOS</center></h5></th>
                 </tr>
                 <tr>
-                    <th colspan="5"><h5><center>DETALLES DEL CONDUCTOR</center></h5></th>
+                    <th colspan="6"><h5><center>DETALLES DEL CONDUCTOR</center></h5></th>
                     <th colspan="2"><h5><center>DETALLES DE ELIMINACION</center></h5></th>
                     <th rowspan="2"><h5><center>OPCIONES</center></h5></th>
                 </tr>
                 <tr>
-                 <th scope="col"><center>ID</center></th>
                  <th scope="col"><center>DPI</center></th>
                  <th scope="col"><center>NOMBRES</center></th>
                  <th scope="col"><center>APELLIDOS</center></th>
                  <th scope="col"><center>EDAD</center></th>
+                 <th scope="col"><center>SUELDO</center></th>
+                 <th scope="col"><center>FECHA INGRESO</center></th>
                  <th scope="col"><center>FECHA</center></th>
                  <th scope="col"><center>USUARIO</center></th>
                 </tr>
@@ -75,17 +78,18 @@
                 <tbody id="tabla">
                     <c:forEach var="dato" items="${datos}">
                         <tr>
-                            <td><center>${dato.getIdConductorEliminado()}</center></td>
                             <td><center>${dato.getDpiConductorEliminado()}</center></td>
                             <td><center>${dato.getNombresConductorEliminado()}</center></td>
                             <td><center>${dato.getApellidosConductorEliminado()}</center></td>
-                            <td><center>${dato.getEdadConductorliminado()}</center></td>
-                            <td><center>${dato.getFecha()}</center></td>
+                            <td><center>${dato.getEdadConductorEliminado()}</center></td>
+                            <td><center>${dato.getSueldoConductorEliminado()}</center></td>
+                            <td><center>${dato.getFechaIngresoConductorEliminado()}</center></td>
+                            <td><center>${dato.getFechaEliminacion()}</center></td>
                             <td><center>${dato.getCorreo()}</center></td>
                             <td>
                             <center> 
                                 <form action="ControladorConductorEliminado" method="POST">
-                                <input type="hidden" id="idClienteEliminado" name="idConductorEliminado" value="${dato.getIdConductorEliminado()}">
+                                <input type="hidden" id="idConductorEliminado" name="idConductorEliminado" value="${dato.getIdConductorEliminado()}">
                                 <button class="btn btn-secondary" type="submit" name="accion" value="Restaurar"> Restaurar</button>
                                 </form>
                             </center>    

@@ -127,7 +127,7 @@ Conductor cond = new Conductor();
                 request.getRequestDispatcher("ConductorIndex.jsp").forward(request, response);
                 break;
             case "Papelera":
-                request.getRequestDispatcher("ConductorEliminadoIndex.jsp").forward(request, response);
+                request.getRequestDispatcher("ControladorConductorEliminado?accion=Listar").forward(request, response);
            default: throw new AssertionError();
        }
     }

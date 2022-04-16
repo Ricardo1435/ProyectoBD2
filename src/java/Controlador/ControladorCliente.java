@@ -125,9 +125,9 @@ Cliente cli = new Cliente();
                 String correo=request.getParameter("correo");
                 dao.eliminar(idCli, correo);
                 request.getRequestDispatcher("ControladorCliente?accion=Listar").forward(request, response);
-                 break;
+                break;
             case "Papelera":
-                request.getRequestDispatcher("ClienteEliminadoIndex.jsp").forward(request, response);
+                request.getRequestDispatcher("ControladorClienteEliminado?accion=Listar").forward(request, response);
            default: throw new AssertionError();
        }
     }

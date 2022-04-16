@@ -87,7 +87,10 @@ ClienteEliminado cliEliminado = new ClienteEliminado();
                 String idCli=request.getParameter("idClienteEliminado");
                 dao.restaurar(idCli);
                 request.getRequestDispatcher("ControladorClienteEliminado?accion=Listar").forward(request, response);
-                 break;
+                break;
+            case "Volver":
+                request.getRequestDispatcher("ControladorCliente?accion=Listar").forward(request, response);
+                break;
             default: throw new AssertionError();
        }
     }

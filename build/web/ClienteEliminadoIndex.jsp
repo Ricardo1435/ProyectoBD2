@@ -42,7 +42,9 @@
         <div class="card border-info">
             <div class="card-header bg-info text-white">
             <div class="navbar">
-               <a class="btn btn-light" id="new" name="accion" value="Volver" href="ClienteIndex.jsp"><i class="fa fa-arrow-left " aria-hidden="true"></i></a>
+                <form action="ControladorClienteEliminado" method="POST">
+                <button class="btn btn-light" id="new" type="submit" name="accion" value="Volver"><i class="fa fa-arrow-left " aria-hidden="true"></i></button>
+                </form>
                <form class="form-inline" action="ControladorClienteEliminado" method="POST">
                    <input type="search" class="form-control" autocomplete="off" name="ingresoBuscar">
                    <input type="submit" name="accion" value="Buscar" class="btn btn-light">
