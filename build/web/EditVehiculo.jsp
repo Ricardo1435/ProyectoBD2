@@ -81,10 +81,13 @@
                             }
                     %>
                 </select>        
-            </div>
+           
+                </div>
                 <button type="submit" class="btn btn-primary my-3" id="btnGuardar" name="accion" value="Actualizar">Guardar &nbsp;&nbsp;<i class="fas fa-save"></i></button>
                 <a href="VehiculoIndex.jsp"> <input type="button" value="Cancelar" class="btn btn-danger" id="btnCancelar"></a> 
             </form>
-       
+            </div>
+          </div>
+         </div>
     </body>
 </html>

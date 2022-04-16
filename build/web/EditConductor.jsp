@@ -67,7 +67,7 @@
                  </div>
                 <div>
                     <b><label for="ingresoSueldo" class="mt-2">Sueldo</label></b>
-                    <input type="number" class="form-control" autocomplete="off" name="ingresoSueldo" min="1" pattern="^[0-9]+" placeholder="En numeros" value="${conductor.getSueldo()}" required>
+                    <input type="number" class="form-control" autocomplete="off" name="ingresoSueldo" step="0.01" min="1" placeholder="En numeros" value="${conductor.getSueldo()}" required>
                 </div>
                 <div>
                     <b><label for="ingresoFecha" class="mt-2">FECHA Y HORA</label></b>

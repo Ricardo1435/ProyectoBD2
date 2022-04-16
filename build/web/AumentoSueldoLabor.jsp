@@ -48,7 +48,7 @@
                         </div>
                          <div>
                             <b><label for="ingresoCantidadAumentoUno" class="mt-2">CANTIDAD DE AUMENTO:</label></b>
-                            <input type="number" name="ingresoCantidadAumentoUno" class="form-control" autocomplete="off"  min="1" pattern="^[0-9]+" placeholder="En números" required>
+                            <input type="number" name="ingresoCantidadAumentoUno" class="form-control" autocomplete="off"  step="0.01" min="1" placeholder="En números" required>
                         </div>
                         <button type="submit" class="btn btn-primary my-3" id="btnGuardar" name="accion" value="AumentoSueldoLabor">Guardar &nbsp;&nbsp;<i class="fas fa-save"></i></button> 
                         <a href="ConductorIndex.jsp"> <input type="button" value="Cancelar" class="btn btn-danger" id="btnCancelar"></a> 

@@ -15,7 +15,7 @@
         <link href="CSS/estilos.css" rel="stylesheet">
         <!-- Favicon -->
         <link rel="icon" href="IMG/bus.svg">
-        <title>Editar Vehiculo</title>
+        <title>Editar Destino</title>
     </head>
     <body>
         <!-- Barra de Navegacion -->
@@ -27,44 +27,40 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                            <a class="nav-link">Editar Vehiculo <span class="sr-only">(current)</span></a>
+                            <a class="nav-link">Editar Destino <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="VehiculoIndex.jsp">Vehiculos <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="DestinoIndex.jsp">Destinos<span class="sr-only">(current)</span></a>
                         </li>
                     </ul>
                 </div>
         </nav>
         
-         <div class="container mt-4 mb-4 col-lg-5">
+        <div class="container mt-4 mb-4 col-lg-5">
             <div class="card border-info">
                 <div class="card-header bg-info text-white">
-                    <center><h2 class="mt-2 mb-2"> EDITAR VEHICULO &nbsp;<i class="fas fa-user-edit"></i></h2> </center>
+                    <center><h2 class="mt-2 mb-2"> EDITAR DESTINO &nbsp;<i class="fas fa-user-edit"></i></h2> </center>
                 </div>
-            <div class="card-body">
-            <form action="ControladorVehiculo" method="POST">
-                <div>
-                    <input type="hidden" class="form-control" autocomplete="off" name="ingresoIdVehiculo" value="${vehiculo.getIdVehiculo()}" required >
-                </div>
-                <div>
-                    <b><label for="ingresoMatricula" class="mt-2">MATRICULA</label></b>
-                    <input type="text" class="form-control" autocomplete="off" name="ingresoMatricula" value="${vehiculo.getMatricula()}" required>
-                </div>                
-                <div>
-                    <b><label for="ingresoAliasVehiculo" class="mt-2">ALIAS</label></b>
-                    <input type="text" class="form-control" autocomplete="off" name="ingresoAliasVehiculo" placeholder="Ingrese alias" value="${vehiculo.getAliasVehiculo()}" required>
-                </div>
-                <div>
-                    <b><label for="ingresoCantidadAsientos" class="mt-2">ASIENTOS</label></b>
-                    <input type="number" class="form-control" min="1" pattern="^[0-9]+" autocomplete="off" name="ingresoCantidadAsientos" placeholder="Ingrese cantidad de asientos"value="${vehiculo.getCantidadAsientos()}" required>
-                </div>
-                <div>
-               <b><label for="ingresoConductor" class="mt-2">CONDUCTOR</label></b>
-                <select class="custom-select" name="ingresoConductor" id="ingresoConductor" required>
-                    <option value="${vehiculo.getNombresConductor()}">--Cambiar Conductor--</option>
+                <div class="card-body">
+        <form  action="ControladorDestino" method="POST">
+            <div>
+                <input type="hidden" class="form-control" autocomplete="off" name="ingresoIdDestino" maxlength="25" value="${destino.getIdDestino()}" required>
+            </div>
+            <div>
+                <b><label for="ingresoNombreDestino" class="mt-2">NOMBRE</label></b>
+                <input type="text" class="form-control" autocomplete="off" name="ingresoNombreDestino" maxlength="75" value="${destino.getNombreDestino()}" required> 
+            </div>
+            <div>
+                <b><label for="ingresoPrecioBoleto" class="mt-2">PRECIO DEL BOLETO</label></b>
+                <input type="number" class="form-control" autocomplete="off" step="0.01" min="1" name="ingresoPrecioBoleto"  value="${destino.getPrecioBoleto()}" required>
+            </div>
+            <div>
+               <b><label for="ingresoIdVehiculo" class="mt-2">VEHICULO</label></b>
+                <select class="custom-select" name="ingresoIdVehiculo" id="ingresoIdVehiculo" required>
+                    <option value="${destino.getIdVehiculo()}">--Cambiar Vehiculo--</option>
                     <%
                         try {
-                              String sql="SELECT id_conductor, nombres_conductor, apellidos_conductor FROM conductor WHERE NOT EXISTS (SELECT NULL FROM vehiculo WHERE vehiculo.id_conductor = conductor.id_conductor)";
+                              String sql="SELECT id_vehiculo, matricula, alias_vehiculo FROM vehiculo WHERE NOT EXISTS (SELECT NULL FROM destino WHERE destino.id_vehiculo = vehiculo.id_vehiculo)";
                               Class.forName("oracle.jdbc.driver.OracleDriver").newInstance();
                               String url="jdbc:oracle:thin:@localhost:1521/XEPDB1";
                               String user="proyectoBD2";
@@ -74,18 +70,18 @@
                               ResultSet rs=stm.executeQuery(sql);
                               while(rs.next()){
                                   %>
-                                  <option value="<%=rs.getString("id_conductor")%>"><%=rs.getString("nombres_conductor")%>&nbsp;<%=rs.getString("apellidos_conductor")%></option>
+                                  <option value="<%=rs.getString("id_vehiculo")%>">Matricula:&nbsp;"<%=rs.getString("matricula")%>"&nbsp;-&nbsp;Alias:&nbsp;"<%=rs.getString("alias_vehiculo")%>"</option>
                                   <%
                               }
                             } catch (Exception e) {
                             }
                     %>
                 </select>        
+            </div>
+            <button type="submit" class="btn btn-primary my-3" id="btnGuardar" name="accion" value="Actualizar">Guardar &nbsp;&nbsp;<i class="fas fa-save"></i></button> 
+           <a href="DestinoIndex.jsp"> <input type="button" value="Cancelar" class="btn btn-danger" id="btnCancelar"></a> 
            
-                </div>
-                <button type="submit" class="btn btn-primary my-3" id="btnGuardar" name="accion" value="Actualizar">Guardar &nbsp;&nbsp;<i class="fas fa-save"></i></button>
-                <a href="VehiculoIndex.jsp"> <input type="button" value="Cancelar" class="btn btn-danger" id="btnCancelar"></a> 
-            </form>
+        </form>
             </div>
           </div>
          </div>
