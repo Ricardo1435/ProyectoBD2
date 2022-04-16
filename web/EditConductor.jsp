@@ -18,7 +18,7 @@
         <link href="CSS/estilos.css" rel="stylesheet">
         <!-- Favicon -->
         <link rel="icon" href="IMG/bus.svg">
-        <title>Editar Cliente</title>
+        <title>Editar Conductor</title>
     </head>
     <body>
         <!-- Barra de Navegacion -->
@@ -30,10 +30,10 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                            <a class="nav-link">Editar Cliente <span class="sr-only">(current)</span></a>
+                            <a class="nav-link">Editar Conductor <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="ClienteIndex.jsp">Clientes <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="ConductorIndex.jsp">Clientes <span class="sr-only">(current)</span></a>
                         </li>
                     </ul>
                 </div>
@@ -42,32 +42,42 @@
          <div class="container mt-4 mb-4 col-lg-5">
             <div class="card border-info">
                 <div class="card-header bg-info text-white">
-                    <center><h2 class="mt-2 mb-2"> EDITAR CLIENTE &nbsp;<i class="fas fa-user-edit"></i></h2> </center>
+                    <center><h2 class="mt-2 mb-2"> EDITAR CONDUCTOR &nbsp;<i class="fas fa-user-edit"></i></h2> </center>
                 </div>
                 <div class="card-body">
-            <form action="ControladorCliente" method="POST">
+            <form action="ControladorConductor" method="POST">
                 <div>
-                    <input type="hidden" class="form-control" autocomplete="off" name="ingresoIdCliente" value="${cliente.getIdCliente()}" required >
-                </div>
-                
-                <div>
-                    <b><label for="ingresoDpiCliente" class="mt-2">DPI</label></b>
-                    <input type="text" class="form-control" autocomplete="off" name="ingresoDpiCliente" value="${cliente.getDpiCliente()}">
+                    <input type="hidden" class="form-control" autocomplete="off" name="ingresoIdConductor" value="${conductor.getIdConductor()}" required >
                 </div>
                 <div>
-                    <b><label for="ingresoNombresCliente" class="mt-2">Nombre</label></b>
-                    <input type="text" class="form-control" autocomplete="off" name="ingresoNombresCliente" placeholder="Ingrese nombre del cliente" value="${cliente.getNombresCliente()}" required>
+                    <b><label for="ingresoDpiConductor" class="mt-2">DPI</label></b>
+                    <input type="text" class="form-control" autocomplete="off" name="ingresoDpiConductor" value="${conductor.getDpiConductor()}">
                 </div>
                 <div>
-                    <b><label for="ingresoApellidosCliente" class="mt-2">Apellido</label></b>
-                    <input type="text" class="form-control" autocomplete="off" name="ingresoApellidosCliente" placeholder="Ingrese apellido del cliente"value="${cliente.getApellidosCliente()}" required>
+                    <b><label for="ingresoNombresConductor" class="mt-2">Nombre</label></b>
+                    <input type="text" class="form-control" autocomplete="off" name="ingresoNombresConductor" placeholder="Ingrese nombre del cliente" value="${conductor.getNombresConductor()}" required>
                 </div>
                 <div>
-                    <b><label for="ingresoEdadCliente" class="mt-2">Edad</label></b>
-                    <input type="number" class="form-control" autocomplete="off" name="ingresoEdadCliente" min="1" pattern="^[0-9]+" placeholder="Ingrese edad del cliente" value="${cliente.getEdadCliente()}" required>
+                    <b><label for="ingresoApellidosConductor" class="mt-2">Apellido</label></b>
+                    <input type="text" class="form-control" autocomplete="off" name="ingresoApellidosConductor" placeholder="Ingrese apellido del cliente"value="${conductor.getApellidosConductor()}" required>
+                </div>
+                <div>
+                    <b><label for="ingresoEdadConductor" class="mt-2">Edad</label></b>
+                    <input type="number" class="form-control" autocomplete="off" name="ingresoEdadConductor" min="1" pattern="^[0-9]+" placeholder="En numeros" value="${conductor.getEdadConductor()}" required>
                  </div>
+                <div>
+                    <b><label for="ingresoSueldo" class="mt-2">Sueldo</label></b>
+                    <input type="number" class="form-control" autocomplete="off" name="ingresoSueldo" min="1" pattern="^[0-9]+" placeholder="En numeros" value="${conductor.getSueldo()}" required>
+                </div>
+                <div>
+                    <b><label for="ingresoFecha" class="mt-2">FECHA Y HORA</label></b>
+                    <input type="text" class="form-control" autocomplete="off" name="ingresoFecha" placeholder="DD/MM/AAAA HH:MM TT" value="${conductor.getFechaIngreso()}" required>
+                </div>
+                <div>
+                    <input type="hidden" class="form-control" autocomplete="off" name="ingresoDisponibilidad" value="${conductor.getDisponibilidad()}" required>
+                </div>
                 <button type="submit" class="btn btn-primary my-3" id="btnGuardar" name="accion" value="Actualizar">Guardar &nbsp;&nbsp;<i class="fas fa-save"></i></button>
-                <a href="ClienteIndex.jsp"> <input type="button" value="Cancelar" class="btn btn-danger" id="btnCancelar"></a> 
+                <a href="ConductorIndex.jsp"> <input type="button" value="Cancelar" class="btn btn-danger" id="btnCancelar"></a> 
             </form>
                  </div>
             </div>

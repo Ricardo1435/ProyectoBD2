@@ -49,8 +49,9 @@
                 <div>
                     <input type="hidden" class="form-control" autocomplete="off" name="ingresoIdCliente" value="${cliente.getIdCliente()}" required >
                 </div>
-                <b><label for="ingresoDPI" class="mt-2">DPI</label></b>
+                
                 <div>
+                    <b><label for="ingresoDpiCliente" class="mt-2">DPI</label></b>
                     <input type="text" class="form-control" autocomplete="off" name="ingresoDpiCliente" value="${cliente.getDpiCliente()}">
                 </div>
                 <div>

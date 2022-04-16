@@ -16,7 +16,7 @@ public class ClienteEliminadoDAO {
     
     public List listar(){
         List <ClienteEliminado>lista = new ArrayList<>();
-        String sql="SELECT * FROM cliente_eliminado";
+        String sql="SELECT id_cliente_eliminado, dpi_cliente, nombres_cliente, apellidos_cliente, edad_cliente, to_char(fecha, 'DD/MM/YYYY HH:MI AM'), correo FROM cliente_eliminado";
         try {
             con=c.conectar();
             ps=con.prepareStatement(sql);
