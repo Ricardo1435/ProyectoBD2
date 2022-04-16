@@ -91,7 +91,7 @@
                             <td><center>${dato.getNombresConductor()}</center></td>
                             <td><center>${dato.getApellidosConductor()}</center></td>
                             <td><center>${dato.getEdadConductor()}</center></td>
-                            <td><center>${dato.getSueldo()}</center></td>
+                            <td><center>Q. ${dato.getSueldo()}</center></td>
                             <td><center>${dato.getFechaIngreso()}</center></td>
                             <td><center>${dato.getDisponibilidad()}</center></td>
                             <td>
@@ -114,6 +114,7 @@
            <form action="ControladorConductor" method="POST">
              <button type="submit" id="btnListar" class="btn btn-outline-info my-3" name="accion" value="Listar" title="Mostrar Conductores"><i class="fas fa-clipboard-list fa-3x"></i></button>
              <button type="submit" class="btn btn-outline-secondary my-3" name="accion" value="Papelera" title="Conductores Eliminados"><i class="fa fa-trash-o fa-3x" aria-hidden="true"></i></button>
+             <button type="submit" class="btn btn-outline-success my-3" name="accion" value="Sueldos" title="Aumentar Sueldos"><i class="fa fa-money fa-3x" aria-hidden="true"></i></button>
            </form>
         </div>
     </body>

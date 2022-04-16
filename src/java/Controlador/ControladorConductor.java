@@ -128,6 +128,13 @@ Conductor cond = new Conductor();
                 break;
             case "Papelera":
                 request.getRequestDispatcher("ControladorConductorEliminado?accion=Listar").forward(request, response);
+                break;
+            case "Volver":
+                request.getRequestDispatcher("ControladorConductor?accion=Listar").forward(request, response);
+                break;
+            case "Sueldos":
+                request.getRequestDispatcher("AumentoSueldo.jsp").forward(request, response);
+                break;
            default: throw new AssertionError();
        }
     }
