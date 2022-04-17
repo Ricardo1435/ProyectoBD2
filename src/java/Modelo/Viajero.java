@@ -3,12 +3,13 @@ package Modelo;
 
 public class Viajero {
     private String rowId, idCliente, idDestino, asiento, pesoEquipaje, fechaViaje, 
-    cobroEquipaje, descuento, pagoTotal, correo, nombresCliente, apellidosCliente, nombreDestino, precioBoleto; 
+    cobroEquipaje, descuento, pagoTotal, correo, nombresCliente, apellidosCliente, nombreDestino, precioBoleto,
+            cantidadDevolucion, cantidadPenalizacion; 
 
     public Viajero() {
     }
 
-    public Viajero(String rowId, String idCliente, String idDestino, String asiento, String pesoEquipaje, String fechaViaje, String cobroEquipaje, String descuento, String pagoTotal, String correo, String nombresCliente, String apellidosCliente, String nombreDestino, String precioBoleto) {
+    public Viajero(String rowId, String idCliente, String idDestino, String asiento, String pesoEquipaje, String fechaViaje, String cobroEquipaje, String descuento, String pagoTotal, String correo, String nombresCliente, String apellidosCliente, String nombreDestino, String precioBoleto, String cantidadDevolucion, String cantidadPenalizacion) {
         this.rowId = rowId;
         this.idCliente = idCliente;
         this.idDestino = idDestino;
@@ -23,7 +24,13 @@ public class Viajero {
         this.apellidosCliente = apellidosCliente;
         this.nombreDestino = nombreDestino;
         this.precioBoleto = precioBoleto;
+        this.cantidadDevolucion = cantidadDevolucion;
+        this.cantidadPenalizacion = cantidadPenalizacion;
     }
+
+    
+
+    
 
     public String getRowId() {
         return rowId;
@@ -136,5 +143,23 @@ public class Viajero {
     public void setPrecioBoleto(String precioBoleto) {
         this.precioBoleto = precioBoleto;
     }
+
+    public String getCantidadDevolucion() {
+        return cantidadDevolucion;
+    }
+
+    public void setCantidadDevolucion(String cantidadDevolucion) {
+        this.cantidadDevolucion = cantidadDevolucion;
+    }
+
+    public String getCantidadPenalizacion() {
+        return cantidadPenalizacion;
+    }
+
+    public void setCantidadPenalizacion(String cantidadPenalizacion) {
+        this.cantidadPenalizacion = cantidadPenalizacion;
+    }
+    
+    
     
 }

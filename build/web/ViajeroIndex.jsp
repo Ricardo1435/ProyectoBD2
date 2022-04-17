@@ -103,7 +103,10 @@
                             <center> 
                                 <form action="ControladorViajero" method="POST">
                                 <input type="hidden" name="idViajero" id="idViajero" value="${dato.getRowId()}"> 
+                                <input type="hidden" name="idCliente" id="idCliente" value="${dato.getIdCliente()}"> 
+                                <input type="hidden" name="idDestino" id="idDestino" value="${dato.getIdDestino()}"> 
                                 <button class="btn btn-warning" type="submit" name="accion" value="Editar"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-secondary" type="submit" name="accion" value="PrepararDevolucion"><i class="fa fa-undo" aria-hidden="true"></i></button>
                                 </form>
                             </center>    
                             </td>
@@ -113,7 +116,6 @@
             </table>
             <form action="ControladorViajero" method="POST">
              <button type="submit" id="btnListar" class="btn btn-outline-info my-3" name="accion" value="Listar" title="Mostrar Viajeros"><i class="fas fa-clipboard-list fa-3x"></i></button>
-             <button type="submit" id="btnListar" class="btn btn-outline-secondary my-3" name="accion" value="GestionarDevoluciones" title="Reembolso de Dinero"><i class="fa fa-undo fa-3x" aria-hidden="true"></i></button>
             </form>
         </div>
         
