@@ -128,14 +128,17 @@ ViajeroDAO dao = new ViajeroDAO();
                 Viajero via=dao.preparoDev(idViajero4);
                 request.setAttribute("viajero", via);
                 request.getRequestDispatcher("PrepararDevolucion.jsp").forward(request, response);
-                break;
-                
+                break;  
            case "Devolucion":
                String idCli=request.getParameter("ingresoIdCliente");
                String idDes=request.getParameter("ingresoIdDestino");
                dao.devolucion(idCli, idDes);
                request.getRequestDispatcher("ControladorViajero?accion=Listar").forward(request, response);
                break;
+           case "Devoluciones":
+               request.getRequestDispatcher("ControladorDevolucion?accion=Listar").forward(request, response);
+               break;
+           
            default: throw new AssertionError();
            
        }

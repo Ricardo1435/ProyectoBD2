@@ -79,7 +79,7 @@
                  <th scope="col"><center>PRECIO</center></th>
                  
                  <th scope="col"><center>ASIENTO</center></th>
-                 <th scope="col"><center>EQUIPAJE (lbs)</center></th>
+                 <th scope="col"><center>EQUIPAJE</center></th>
                  <th scope="col"><center>FECHA</center></th>
                  <th scope="col"><center>COBRO EQUIPAJE</center></th>
                  <th scope="col"><center>DESCUENTO</center></th>
@@ -116,6 +116,7 @@
             </table>
             <form action="ControladorViajero" method="POST">
              <button type="submit" id="btnListar" class="btn btn-outline-info my-3" name="accion" value="Listar" title="Mostrar Viajeros"><i class="fas fa-clipboard-list fa-3x"></i></button>
+             <button class="btn btn-outline-secondary" type="submit" name="accion" value="Devoluciones"><i class="fa fa-undo fa-3x" aria-hidden="true"></i></button>
             </form>
         </div>
         

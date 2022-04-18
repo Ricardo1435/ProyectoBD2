@@ -135,6 +135,18 @@ Conductor cond = new Conductor();
             case "Sueldos":
                 request.getRequestDispatcher("AumentoSueldo.jsp").forward(request, response);
                 break;
+            case "AumentoSueldoLabor":
+                String anio=request.getParameter("ingresoAnio");
+                String cantidad1=request.getParameter("ingresoCantidadAumentoUno");
+                dao.aumentoSueldoLabor(anio, cantidad1);
+                request.getRequestDispatcher("ControladorConductor?accion=Listar").forward(request, response);
+            break;
+         case "AumentoSueldoEdad":
+                String edad=request.getParameter("ingresoEdad");
+                String cantidad2=request.getParameter("ingresoCantidadAumentoDos");
+                dao.aumentoSueldoEdad(edad, cantidad2);
+                request.getRequestDispatcher("ControladorConductor?accion=Listar").forward(request, response);
+            break;
            default: throw new AssertionError();
        }
     }

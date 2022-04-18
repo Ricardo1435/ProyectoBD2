@@ -17,7 +17,7 @@
         <script src="Sweetalert/sweetalert.js" type="text/javascript"></script>
         <!-- Favicon -->
         <link rel="icon" href="IMG/bus.svg">
-        <title>Viajeros</title>
+        <title>Devoluciones</title>
     </head>
     <body>
         <!-- Barra de Navegacion -->
@@ -29,10 +29,10 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                            <a class="nav-link">Viajeros <span class="sr-only">(current)</span></a>
+                            <a class="nav-link">Devoluciones <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="principal.jsp">Inicio <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="ViajeroIndex.jsp">Viajeros <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -49,25 +49,30 @@
                 </div>
         </nav>
         
-        <div class="container m-auto">
+        <div class="container mt-4">
+        <div class="card border-info">
+         <div class="card-header bg-info text-white">
+       
             <div class="navbar">
-                <a class="btn btn-outline-success btn-bg my-3 mx-1" id="new" name="accion" value="Nuevo" href="AddViajero.jsp">Nuevo</a>
-               <form class="form-inline" action="ControladorViajero" method="POST">
-                   <input type="search" class="form-control" autocomplete="off" name="ingresoBuscar" placeholder="Nombre del Viajero">
-                   <input type="submit" name="accion" value="Buscar" class="btn btn-outline-success">
+                <form action="ControladorDevolucion" method="POST">
+                <button class="btn btn-light" id="new" type="submit" name="accion" value="Volver"><i class="fa fa-arrow-left " aria-hidden="true"></i></button>
+                </form>
+               <form class="form-inline" action="ControladorDevolucion" method="POST">
+                   <input type="search" class="form-control" autocomplete="off" name="ingresoBuscar" placeholder="Nombre del Cliente">
+                   <input type="submit" name="accion" value="Buscar" class="btn btn-light">
                </form>
-              </div>
         </div>
-        
+              </div>
+        <div class="card-body">
         <!-- Tabla-->
         <div class="p-4">
             <table class="table table-bordered table-striped m-auto">
                 <thead class="thead-dark" >
                 <tr>
                     <th colspan="2"><h5><center>CLIENTE</center></h5> </th>
-                    <th colspan="2"><h5><center>DESTINO</center></h5> </th>
-                    <th colspan="6"><h5><center>DETALLES DEL VIAJE</center></h5> </th>
-                    <th rowspan="2"><center>OPCIONES</center></th>
+                    <th colspan="1"><h5><center>DESTINO</center></h5> </th>
+                    <th colspan="3"><h5><center>DETALLES</center></h5> </th>
+                  
                 </tr>
                 <tr>
                  
@@ -76,14 +81,12 @@
 
                  
                  <th scope="col"><center>LUGAR</center></th>
-                 <th scope="col"><center>PRECIO</center></th>
                  
-                 <th scope="col"><center>ASIENTO</center></th>
-                 <th scope="col"><center>EQUIPAJE</center></th>
+                 <th scope="col"><center>CANTIDAD DE DEVOLUCION</center></th>
+                 <th scope="col"><center>CANTIDAD DE PENALIZACION</center></th>
                  <th scope="col"><center>FECHA</center></th>
-                 <th scope="col"><center>COBRO EQUIPAJE</center></th>
-                 <th scope="col"><center>DESCUENTO</center></th>
-                 <th scope="col"><center>PAGO TOTAL</center></th>
+                
+                 
                 </tr>
               </thead>
                 <tbody id="tabla">
@@ -92,34 +95,22 @@
                             <td><center>${dato.getNombresCliente()}</center></td>
                             <td><center>${dato.getApellidosCliente()}</center></td>
                             <td><center>${dato.getNombreDestino()}</center></td>
-                            <td><center>Q. ${dato.getPrecioBoleto()}</center></td>
-                            <td><center>${dato.getAsiento()}</center></td>
-                            <td><center>${dato.getPesoEquipaje()}</center></td>
-                            <td><center>${dato.getFechaViaje()}</center></td>
-                            <td><center>Q. ${dato.getCobroEquipaje()}</center></td>
-                            <td><center>Q. ${dato.getDescuento()}</center></td>
-                            <td><center>Q. ${dato.getPagoTotal()}</center></td>
-                            <td>
-                            <center> 
-                                <form action="ControladorViajero" method="POST">
-                                <input type="hidden" name="idViajero" id="idViajero" value="${dato.getRowId()}"> 
-                                <input type="hidden" name="idCliente" id="idCliente" value="${dato.getIdCliente()}"> 
-                                <input type="hidden" name="idDestino" id="idDestino" value="${dato.getIdDestino()}"> 
-                                <button class="btn btn-warning" type="submit" name="accion" value="Editar"><i class="fas fa-edit"></i></button>
-                                <button class="btn btn-secondary" type="submit" name="accion" value="PrepararDevolucion"><i class="fa fa-undo" aria-hidden="true"></i></button>
-                                </form>
-                            </center>    
-                            </td>
+                            <td><center>Q. ${dato.getCantidadDevolucion()}</center></td>
+                            <td><center>Q. ${dato.getCantidadPenalizacion()}</center></td>
+                            <td><center>${dato.getFecha()}</center></td>
                         </tr>
                     </c:forEach>
                 </tbody>
+                
             </table>
-            <form action="ControladorViajero" method="POST">
+            </div>
+            <form action="ControladorDevolucion" method="POST">
              <button type="submit" id="btnListar" class="btn btn-outline-info my-3" name="accion" value="Listar" title="Mostrar Viajeros"><i class="fas fa-clipboard-list fa-3x"></i></button>
-             <button class="btn btn-outline-secondary" type="submit" name="accion" value="Devoluciones"><i class="fa fa-undo fa-3x" aria-hidden="true"></i></button>
             </form>
-        </div>
         
+         </div>
+        </div>
+    </div>
         
     </body>
 </html>

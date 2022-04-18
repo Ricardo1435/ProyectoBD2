@@ -41,8 +41,8 @@
                 </div>
                 <div class="card-body">
                         <center>
-                        <a href="AumentoSueldoLabor.jsp"> <input type="button" value="Aumento segun años de labor" class="btn btn-primary"></a> 
-                        <a href="AumentoSueldoEdad.jsp"> <input type="button" value="Aumento segun edad " class="btn btn-primary"></a> 
+                        <a href="AumentoSueldoLabor.jsp"> <input type="button" value="Aumento segun sus años de labor" class="btn btn-primary"></a> 
+                        <a href="AumentoSueldoEdad.jsp"> <input type="button" value="Aumento segun su edad " class="btn btn-primary"></a> 
                        </center>
                 </div>
             </div>

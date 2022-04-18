@@ -41,7 +41,7 @@
                     <center><h2 class="mt-2 mb-2"> AUMENTO DE SUELDO SEGÚN LA EDAD </h2> </center>
                 </div>
                 <div class="card-body">
-                    <form action="ControladorSueldoConductor" method="POST">
+                    <form action="ControladorConductor" method="POST">
                         <div>
                             <b><label for="ingresoEdad" class="mt-2">CANTIDAD DE EDAD EQUIVALENTE O MAYOR A:</label></b>
                             <input type="number" name="ingresoEdad" class="form-control" autocomplete="off"  min="1" pattern="^[0-9]+" placeholder="En números" required>

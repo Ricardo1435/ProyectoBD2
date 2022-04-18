@@ -142,4 +142,32 @@ public class ConductorDAO {
         }
         return lista;
     }
+     
+     public void aumentoSueldoLabor(String anio, String cantidadAumentoUno) {
+        String sql="{call AUMENTA_SUELDO_LABOR (?,?)}";
+        
+        try {
+            con=c.conectar();
+            CallableStatement cs = con.prepareCall(sql);
+            cs.setString(1, anio);
+            cs.setString(2, cantidadAumentoUno);
+            cs.executeUpdate();
+        } catch (Exception e) {
+            
+        }
+    }
+     
+       public void aumentoSueldoEdad(String edad, String cantidadAumentoDos) {
+        String sql="{call AUMENTA_SUELDO_EDAD (?,?)}";
+        
+        try {
+            con=c.conectar();
+            CallableStatement cs = con.prepareCall(sql);
+            cs.setString(1, edad);
+            cs.setString(2, cantidadAumentoDos);
+            cs.executeUpdate();
+        } catch (Exception e) {
+            
+        }
+    }
 }

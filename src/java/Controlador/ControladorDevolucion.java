@@ -1,6 +1,6 @@
 package Controlador;
-import Modelo.SueldoConductor;
-import Modelo.SueldoConductorDAO;
+import Modelo.Devolucion;
+import Modelo.DevolucionDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -14,10 +14,10 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Ricardo
  */
-@WebServlet(name = "ControladorSueldoConductor", urlPatterns = {"/ControladorSueldoConductor"})
-public class ControladorSueldoConductor extends HttpServlet {
-SueldoConductorDAO dao=new SueldoConductorDAO();
-SueldoConductor sueldoCon = new SueldoConductor();
+@WebServlet(name = "ControladorDevolucion", urlPatterns = {"/ControladorDevolucion"})
+public class ControladorDevolucion extends HttpServlet {
+Devolucion dev = new Devolucion();
+DevolucionDAO dao = new DevolucionDAO();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -35,10 +35,10 @@ SueldoConductor sueldoCon = new SueldoConductor();
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ControladorSueldoConductor</title>");            
+            out.println("<title>Servlet ControladorDevolucion</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ControladorSueldoConductor at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ControladorDevolucion at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -70,23 +70,24 @@ SueldoConductor sueldoCon = new SueldoConductor();
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String accion=request.getParameter("accion");
+           String accion=request.getParameter("accion");
         switch (accion){
-        case "AumentoSueldoLabor":
-                String anio=request.getParameter("ingresoAnio");
-                String cantidad1=request.getParameter("ingresoCantidadAumentoUno");
-                dao.aumentoSueldoLabor(anio, cantidad1);
-                request.getRequestDispatcher("ControladorConductor?accion=Listar").forward(request, response);
-            break;
-         case "AumentoSueldoEdad":
-                String edad=request.getParameter("ingresoEdad");
-                String cantidad2=request.getParameter("ingresoCantidadAumentoDos");
-                dao.aumentoSueldoEdad(edad, cantidad2);
-                request.getRequestDispatcher("ControladorConductor?accion=Listar").forward(request, response);
-            break;
-        
-        default: throw new AssertionError();
-    }
+            case "Listar":
+                List<Devolucion>datos=dao.listar();
+                request.setAttribute("datos", datos);
+                request.getRequestDispatcher("DevolucionIndex.jsp").forward(request, response);
+                break;
+            case "Volver":
+               request.getRequestDispatcher("ControladorViajero?accion=Listar").forward(request, response);
+               break;
+            case "Buscar":
+                String dato=request.getParameter("ingresoBuscar");
+                List <Devolucion> lista = dao.buscar(dato);
+                request.setAttribute("datos", lista);
+                request.getRequestDispatcher("DevolucionIndex.jsp").forward(request, response);
+                break;
+            default: throw new AssertionError();
+        }
     }
 
     /**
